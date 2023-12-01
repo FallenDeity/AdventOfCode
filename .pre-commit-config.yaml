@@ -39,6 +39,17 @@ repos:
 
   - repo: local
     hooks:
+      - id: mypy
+        name: mypy
+        pass_filenames: false
+        entry: poetry
+        args: ["run", "mypy", "."]
+        language: python
+        stages:
+          - commit
+
+  - repo: local
+    hooks:
       - id: ruff
         name: ruff
         pass_filenames: false
