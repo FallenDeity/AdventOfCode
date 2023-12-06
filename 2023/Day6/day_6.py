@@ -15,7 +15,6 @@ def solve_d(t: float, d: float) -> float:
 def part_a(lines: typing.List[str]) -> int:
     data = dict(zip(*[map(int, i.split(":")[-1].split()) for i in lines]))
     values = [((k + solve_d(k, v)) // 2) - ((k - solve_d(k, v)) // 2) for k, v in data.items()]
-    print(values)
     return int(prod(values))
 
 
