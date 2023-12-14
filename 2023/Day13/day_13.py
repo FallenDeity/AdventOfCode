@@ -17,7 +17,7 @@ def find_mirror(case: typing.List[str], smudges: int = 0) -> int:
         for i in range(1, len(c)):
             if total(c, i) == smudges:
                 return m * i
-    raise ValueError
+    return -1
 
 
 def part_a(lines: typing.List[typing.List[str]]) -> int:
