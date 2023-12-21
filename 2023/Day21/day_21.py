@@ -8,6 +8,16 @@ def get_input(file_name: str) -> typing.List[str]:
     return lines
 
 
+def print_garden(garden: typing.List[str], positions: typing.Sequence[typing.Tuple[int, int]]) -> None:
+    for i in range(len(garden)):
+        for j in range(len(garden[0])):
+            if (i, j) in positions:
+                print("O", end="")
+            else:
+                print(garden[i][j], end="")
+        print()
+
+
 def part_a(garden: typing.List[str], steps: int = 64) -> int:
     x_l, y_l = len(garden), len(garden[0])
     r, c = [(i, j) for i in range(len(garden)) for j in range(len(garden[0])) if garden[i][j] == "S"][0]
@@ -28,6 +38,8 @@ def part_a(garden: typing.List[str], steps: int = 64) -> int:
 
 
 def part_b(garden: typing.List[str], steps: int = 26501365) -> int:
+    # grid is a square, so the pattern repeats after 65 steps at 64 steps its 1 step shy from the edge
+    # the edge also has no walls, so the pattern is the same for all steps after 65
     a0 = 3848  # part_a(garden, 65)
     a1 = 34310  # part_a(garden, 65 + 131)
     a2 = 95144  # part_a(garden, 65 + 131 * 2)
